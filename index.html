@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Arvin Jenab, ND - Integrative Medicine Specialist</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+    <div class="container">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <button id="themeToggle" class="glass-button theme-btn">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Particle Background -->
+        <div class="particles" id="particles"></div>
+        
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="glass-card hero-card">
+                <div class="hero-content">
+                    <h1 class="hero-title">Dr. Arvin Jenab, ND</h1>
+                    <p class="hero-subtitle">Medical Director of Naturopathic Medicine</p>
+                    <p class="hero-description">UCI Susan Samueli Integrative Health Institute</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.7★</span>
+                            <span class="stat-label">Patient Rating</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">UCI</span>
+                            <span class="stat-label">Health</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Cards -->
+        <main class="navigation-grid">
+            <div class="glass-card nav-card" data-page="about" data-color="#e0f2ff">
+                <div class="card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 class="card-title">About Dr. Jenab</h3>
+                <p class="card-description">Learn about his background, education from McGill University and CCNM, and journey in integrative medicine</p>
+                <div class="card-arrow">→</div>
+            </div>
+
+            <div class="glass-card nav-card" data-page="services" data-color="#fff0e6">
+                <div class="card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+                <h3 class="card-title">Clinical Specialties</h3>
+                <p class="card-description">Chronic conditions, digestive disorders, mood disorders, and holistic treatment approaches</p>
+                <div class="card-arrow">→</div>
+            </div>
+
+            <div class="glass-card nav-card" data-page="leadership" data-color="#f0fff0">
+                <div class="card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3 class="card-title">Leadership & Education</h3>
+                <p class="card-description">Residency Director, Board positions, and advancing naturopathic medicine education</p>
+                <div class="card-arrow">→</div>
+            </div>
+
+            <div class="glass-card nav-card" data-page="philosophy" data-color="#fff5f5">
+                <div class="card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </div>
+                <h3 class="card-title">Treatment Philosophy</h3>
+                <p class="card-description">Integrative approach to chronic illness and whole-person health optimization</p>
+                <div class="card-arrow">→</div>
+            </div>
+
+            <div class="glass-card nav-card" data-page="locations" data-color="#f8f0ff">
+                <div class="card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </div>
+                <h3 class="card-title">Locations & Contact</h3>
+                <p class="card-description">UCI Health locations in Irvine and Costa Mesa, appointment scheduling and contact information</p>
+                <div class="card-arrow">→</div>
+            </div>
+
+            <div class="glass-card nav-card" data-page="testimonials" data-color="#fff9e6">
+                <div class="card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                    </svg>
+                </div>
+                <h3 class="card-title">Patient Experience</h3>
+                <p class="card-description">4.7-star rating from patients and testimonials about integrative care</p>
+                <div class="card-arrow">→</div>
+            </div>
+        </main>
+
+        <!-- Quick Contact Section -->
+        <footer class="quick-contact">
+            <div class="glass-card contact-card">
+                <div class="contact-content">
+                    <h3>Schedule an Appointment</h3>
+                    <p>UCI Health Susan Samueli Integrative Health Institute</p>
+                    <div class="contact-buttons">
+                        <a href="tel:949-824-7000" class="glass-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            (949) 824-7000
+                        </a>
+                        <a href="https://www.ucihealth.org/find-a-doctor/j/arvin-jenab" class="glass-button" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 6h13"></path>
+                                <path d="M8 12h13"></path>
+                                <path d="M8 18h13"></path>
+                                <path d="M3 6h.01"></path>
+                                <path d="M3 12h.01"></path>
+                                <path d="M3 18h.01"></path>
+                            </svg>
+                            Book Online
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
