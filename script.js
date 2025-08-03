@@ -1137,3 +1137,13 @@ window.addEventListener('pageshow', (event) => {
         document.body.style.opacity = '1';
     }
 });
+
+// Chat functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const chatCard = document.getElementById('chatCard');
+    if (chatCard) {
+        chatCard.addEventListener('click', () => {
+            alert('Chat feature coming soon! For now, please call (949) 824-7000 or book online for appointments.');
+        });
+    }
+});
