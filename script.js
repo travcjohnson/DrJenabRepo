@@ -1138,12 +1138,225 @@ window.addEventListener('pageshow', (event) => {
     }
 });
 
-// Chat functionality
+// Firebase Auth & Chat functionality
 document.addEventListener('DOMContentLoaded', () => {
-    const chatCard = document.getElementById('chatCard');
-    if (chatCard) {
-        chatCard.addEventListener('click', () => {
-            alert('Chat feature coming soon! For now, please call (949) 824-7000 or book online for appointments.');
+    // Wait for Firebase to initialize
+    const initializeAuth = () => {
+        if (!window.firebaseAuth) {
+            setTimeout(initializeAuth, 100);
+            return;
+        }
+
+        const auth = window.firebaseAuth;
+        
+        // Add error handling for Firebase initialization
+        if (!auth) {
+            console.error('Firebase Auth failed to initialize');
+            alert('Authentication service unavailable. Please refresh the page.');
+            return;
+        }
+        const signInBtn = document.getElementById('signInBtn');
+        const userInfo = document.getElementById('userInfo');
+        const signOutBtn = document.getElementById('signOutBtn');
+        
+        // Prevent redirect loops - only redirect once per session
+        if (sessionStorage.getItem('redirecting') === 'true') {
+            sessionStorage.removeItem('redirecting');
+            return;
+        }
+
+        // Listen for auth state changes
+        window.onAuthStateChanged(auth, (user) => {
+            console.log('🏠 Homepage: Firebase auth state changed:', user ? user.email : 'No user');
+            
+            if (user) {
+                // User is signed in - show user info, no auto-redirect
+                console.log('✅ Firebase user signed in, showing user info');
+                localStorage.setItem('userSignedIn', 'true');
+                localStorage.setItem('userName', user.displayName || user.email);
+                localStorage.setItem('userEmail', user.email);
+                localStorage.setItem('userPhoto', user.photoURL || '');
+                
+                showSignedInState(user.displayName || user.email);
+            } else {
+                console.log('📤 Firebase user signed out, checking localStorage...');
+                
+                // Check if we have localStorage auth (from fallback)
+                const localAuth = localStorage.getItem('userSignedIn') === 'true';
+                const localUser = localStorage.getItem('userName') || 'Test User';
+                
+                if (localAuth) {
+                    console.log('✅ LocalStorage auth found, showing user info');
+                    showSignedInState(localUser);
+                    return;
+                }
+                
+                // No authentication, show signed out state
+                console.log('❌ No authentication found, showing sign-in button');
+                showSignedOutState();
+            }
         });
-    }
+        
+        // Sign in button click - Google Sign In
+        if (signInBtn) {
+            signInBtn.addEventListener('click', async () => {
+                try {
+                    signInBtn.disabled = true;
+                    signInBtn.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                        Signing in...
+                    `;
+                    
+                    const result = await window.signInWithPopup(auth, window.googleProvider);
+                    console.log('Sign in successful:', result.user);
+                    
+                    // Redirect to chat after successful sign-in
+                    sessionStorage.setItem('redirecting', 'true');
+                    window.location.href = 'chat.html';
+                } catch (error) {
+                    console.error('Sign in error:', error);
+                    
+                    // Check if it's a CORS error (common in local development)
+                    if (error.message.includes('CORS') || error.code === 'auth/operation-not-supported-in-this-environment') {
+                        // Fallback for local testing
+                        console.log('🔄 Firebase CORS error, using localStorage fallback');
+                        localStorage.setItem('userSignedIn', 'true');
+                        localStorage.setItem('userName', 'Test User');
+                        localStorage.setItem('userEmail', 'test@example.com');
+                        console.log('✅ LocalStorage fallback auth set, redirecting to chat');
+                        
+                        // Redirect to chat after successful fallback auth
+                        sessionStorage.setItem('redirecting', 'true');
+                        window.location.href = 'chat.html';
+                        return;
+                    }
+                    
+                    alert('Sign in failed: ' + error.message);
+                    
+                    // Reset button
+                    signInBtn.disabled = false;
+                    signInBtn.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                            <polyline points="10,17 15,12 10,7"></polyline>
+                            <line x1="15" y1="12" x2="3" y2="12"></line>
+                        </svg>
+                        Sign In
+                    `;
+                }
+            });
+        }
+        
+        // Sign out button click
+        if (signOutBtn) {
+            signOutBtn.addEventListener('click', async () => {
+                try {
+                    await window.signOut(auth);
+                    console.log('Sign out successful');
+                } catch (error) {
+                    console.error('Sign out error:', error);
+                    alert('Sign out failed: ' + error.message);
+                }
+            });
+        }
+        
+        
+        function showSignedInState(name) {
+            if (signInBtn) signInBtn.style.display = 'none';
+            if (userInfo) {
+                userInfo.style.display = 'flex';
+                const userName = document.getElementById('userName');
+                if (userName) {
+                    userName.textContent = name.split(' ')[0]; // First name only
+                }
+            }
+            
+            // Add persistent chat bubble in header when signed in
+            addChatBubbleToHeader();
+        }
+        
+        function addChatBubbleToHeader() {
+            // Check if chat bubble already exists
+            if (document.getElementById('chatBubble')) return;
+            
+            const headerControls = document.querySelector('.header-controls');
+            if (headerControls) {
+                const chatBubble = document.createElement('button');
+                chatBubble.id = 'chatBubble';
+                chatBubble.className = 'glass-button chat-bubble';
+                chatBubble.style.cssText = `
+                    padding: 0.75rem;
+                    background: rgba(59, 130, 246, 0.15);
+                    border: 2px solid rgba(59, 130, 246, 0.3);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                    position: relative;
+                `;
+                
+                chatBubble.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #3b82f6;">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                `;
+                
+                // Add hover effects
+                chatBubble.addEventListener('mouseenter', () => {
+                    chatBubble.style.transform = 'translate3d(0, -2px, 0) scale(1.1)';
+                    chatBubble.style.boxShadow = 'var(--shadow-medium)';
+                    chatBubble.style.background = 'rgba(59, 130, 246, 0.25)';
+                });
+                
+                chatBubble.addEventListener('mouseleave', () => {
+                    chatBubble.style.transform = 'translate3d(0, 0, 0) scale(1)';
+                    chatBubble.style.boxShadow = 'var(--shadow-light)';
+                    chatBubble.style.background = 'rgba(59, 130, 246, 0.15)';
+                });
+                
+                chatBubble.addEventListener('click', () => {
+                    window.location.href = 'chat.html';
+                });
+                
+                // Insert before the theme toggle button
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    headerControls.insertBefore(chatBubble, themeToggle);
+                } else {
+                    headerControls.appendChild(chatBubble);
+                }
+            }
+        }
+        
+        function showSignedOutState() {
+            if (signInBtn) {
+                signInBtn.style.display = 'block';
+                signInBtn.disabled = false;
+                signInBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10,17 15,12 10,7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                    Sign In
+                `;
+            }
+            if (userInfo) userInfo.style.display = 'none';
+            
+            // Remove chat bubble when signed out
+            const chatBubble = document.getElementById('chatBubble');
+            if (chatBubble) {
+                chatBubble.remove();
+            }
+        }
+    };
+    
+    initializeAuth();
 });
