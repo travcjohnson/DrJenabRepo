@@ -38,6 +38,19 @@ A professional AI chat application featuring Dr. Arvin Jenab, ND, Medical Direct
 - `styles.css` - Glassmorphic design system with theme support
 - `openai-config.example.js` - Template for secure API configuration
 
+## ⚠️ IMPORTANT: Firebase Configuration Required
+
+### Before using authentication, you MUST:
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Select the "jenabapp" project
+3. Navigate to Authentication → Settings → Authorized domains
+4. Add these domains:
+   - `dr-arvin-jenab-ekz6jjpal-travcjohnsons-projects.vercel.app`
+   - `travcjohnson.github.io`
+5. Save changes
+
+**Without this step, sign-in will fail with `auth/unauthorized-domain` error!**
+
 ## 🔧 Setup & Development
 
 ### Prerequisites
