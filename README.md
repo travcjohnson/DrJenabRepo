@@ -4,7 +4,7 @@ A professional AI chat application featuring Dr. Arvin Jenab, ND, Medical Direct
 
 ## 🚀 Live Deployments
 
-- **Vercel (Primary)**: https://dr-arvin-jenab-ekz6jjpal-travcjohnsons-projects.vercel.app
+- **Vercel (Primary)**: https://dr-jenab-chat.vercel.app
 - **GitHub Pages**: https://travcjohnson.github.io/DrJenabRepo
 
 ## ✨ Features
@@ -45,7 +45,8 @@ A professional AI chat application featuring Dr. Arvin Jenab, ND, Medical Direct
 2. Select the "jenabapp" project
 3. Navigate to Authentication → Settings → Authorized domains
 4. Add these domains:
-   - `dr-arvin-jenab-ekz6jjpal-travcjohnsons-projects.vercel.app`
+   - `dr-jenab-chat.vercel.app`
+   - `dr-arvin-jenab-jc8bfd3x7-travcjohnsons-projects.vercel.app`
    - `travcjohnson.github.io`
 5. Save changes
 
