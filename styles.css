@@ -482,7 +482,7 @@ body {
 .page-header h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-primary);
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     margin: 0;
 }
@@ -490,9 +490,9 @@ body {
 .back-button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
     text-decoration: none;
     border-radius: 12px;
     display: inline-flex;
@@ -504,7 +504,8 @@ body {
 }
 
 .back-button:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--glass-bg);
+    border-color: var(--text-primary);
     transform: translate3d(-2px, 0, 0);
 }
 
@@ -535,7 +536,7 @@ body {
 }
 
 .content-card p {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 1rem;
 }
@@ -555,12 +556,12 @@ body {
 }
 
 .education-item h3 {
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .education-item p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     margin: 0;
 }
 
@@ -578,7 +579,7 @@ body {
 }
 
 .service-card h3 {
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
@@ -599,13 +600,13 @@ body {
 }
 
 .modality h4 {
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
 }
 
 .modality p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     margin: 0;
     font-size: 0.9rem;
 }
@@ -620,18 +621,18 @@ body {
 }
 
 .role-item h3 {
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .role-item p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
 .role-description {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted);
     font-style: italic;
     display: block;
 }
@@ -650,18 +651,18 @@ body {
 }
 
 .position h4 {
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .position p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
 .position span {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted);
     font-style: italic;
 }
 
@@ -675,10 +676,10 @@ body {
 
 .association-tag {
     padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -690,7 +691,7 @@ body {
 }
 
 .institutions-list li {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     line-height: 1.6;
 }
@@ -699,7 +700,7 @@ body {
 .philosophy-intro {
     font-size: 1.2rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--text-primary);
     font-weight: 400;
 }
 
@@ -718,33 +719,33 @@ body {
 }
 
 .principle h3 {
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 0.75rem;
     font-size: 1.2rem;
 }
 
 .principle p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     margin: 0;
 }
 
 .philosophy-quote {
     font-size: 1.3rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--text-primary);
     font-style: italic;
     text-align: center;
     margin: 2rem 0;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
     border-radius: 16px;
-    border-left: 4px solid rgba(255, 255, 255, 0.3);
+    border-left: 4px solid var(--text-muted);
 }
 
 cite {
     display: block;
     text-align: center;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     font-style: normal;
     font-weight: 500;
     margin-top: 1rem;
@@ -764,7 +765,7 @@ cite {
 }
 
 .location-card h3 {
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
 }
 
@@ -772,7 +773,7 @@ cite {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
@@ -800,7 +801,7 @@ cite {
 }
 
 .services-info h3, .services-info h4 {
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
 }
 
@@ -811,9 +812,9 @@ cite {
 }
 
 .services-info li {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .services-info li:before {
